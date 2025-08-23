@@ -1,0 +1,53 @@
+### Chat API Examples with Conversation Context
+
+@baseUrl = https://localhost:7029
+@contentType = application/json
+
+### 1. Create a new conversation session
+POST {{baseUrl}}/api/chat/session
+Content-Type: {{contentType}}
+
+### 2. Start a conversation - First question: "What is 5 + 5?"
+POST {{baseUrl}}/api/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "What is 5 + 5?",
+  "sessionId": "YOUR_SESSION_ID_HERE"
+}
+
+### 3. Continue the conversation - Follow-up question: "Add 2 to it"
+POST {{baseUrl}}/api/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "Add 2 to it",
+  "sessionId": "YOUR_SESSION_ID_HERE"
+}
+
+### 4. Get conversation history
+GET {{baseUrl}}/api/chat/session/YOUR_SESSION_ID_HERE/history
+
+### 5. Simple chat without session (no context)
+POST {{baseUrl}}/api/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "What is the capital of France?"
+}
+
+### 6. Start a new conversation with specific model
+POST {{baseUrl}}/api/chat/session?model=llama3.2:latest
+
+### 7. Clear conversation session
+DELETE {{baseUrl}}/api/chat/session/YOUR_SESSION_ID_HERE
+
+### 8. Chat with custom model in existing session
+POST {{baseUrl}}/api/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "Tell me a joke",
+  "sessionId": "YOUR_SESSION_ID_HERE",
+  "model": "llama3.2:latest"
+}

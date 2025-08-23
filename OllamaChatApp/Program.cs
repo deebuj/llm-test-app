@@ -7,9 +7,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Register HttpClient and OllamaService
+// Register HttpClient and services
 builder.Services.AddHttpClient<OllamaService>();
 builder.Services.AddScoped<OllamaService>();
+builder.Services.AddSingleton<ConversationService>();
+builder.Services.AddHostedService<ConversationCleanupService>();
 
 var app = builder.Build();
 
