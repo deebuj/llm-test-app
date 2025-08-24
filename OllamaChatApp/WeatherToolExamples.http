@@ -1,0 +1,65 @@
+### Weather Tool Integration Examples
+
+@baseUrl = https://localhost:7029
+@contentType = application/json
+
+### 1. Create a new conversation session
+POST {{baseUrl}}/api/chat/session
+Content-Type: {{contentType}}
+
+### 2. Ask about weather (tool will be automatically called)
+POST {{baseUrl}}/api/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "What is the weather in New York?",
+  "sessionId": "YOUR_SESSION_ID_HERE"
+}
+
+### 3. Follow-up question using weather context
+POST {{baseUrl}}/api/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "Should I wear a jacket today?",
+  "sessionId": "YOUR_SESSION_ID_HERE"
+}
+
+### 4. Weather in different format
+POST {{baseUrl}}/api/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "How's the temperature in London?",
+  "sessionId": "YOUR_SESSION_ID_HERE"
+}
+
+### 5. Weather comparison
+POST {{baseUrl}}/api/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "What's the weather like in Paris compared to what we discussed earlier?",
+  "sessionId": "YOUR_SESSION_ID_HERE"
+}
+
+### 6. Regular conversation (no tools)
+POST {{baseUrl}}/api/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "Tell me a joke",
+  "sessionId": "YOUR_SESSION_ID_HERE"
+}
+
+### 7. Weather with calculation
+POST {{baseUrl}}/api/chat
+Content-Type: {{contentType}}
+
+{
+  "message": "What's the weather in Tokyo and convert the temperature to Fahrenheit?",
+  "sessionId": "YOUR_SESSION_ID_HERE"
+}
+
+### 8. Get conversation history (will show tool usage)
+GET {{baseUrl}}/api/chat/session/YOUR_SESSION_ID_HERE/history

@@ -9,7 +9,10 @@ builder.Services.AddSwaggerGen();
 
 // Register HttpClient and services
 builder.Services.AddHttpClient<OllamaService>();
+builder.Services.AddHttpClient<WeatherService>();
 builder.Services.AddScoped<OllamaService>();
+builder.Services.AddScoped<WeatherService>();
+builder.Services.AddScoped<ToolDetectionService>();
 builder.Services.AddSingleton<ConversationService>();
 builder.Services.AddHostedService<ConversationCleanupService>();
 

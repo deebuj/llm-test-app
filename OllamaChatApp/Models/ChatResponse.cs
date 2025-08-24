@@ -8,4 +8,5 @@ public class ChatResponse
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public string? SessionId { get; set; }
     public int MessageCount { get; set; } = 0;
+    public List<ToolCall> ToolCalls { get; set; } = new();
 }
